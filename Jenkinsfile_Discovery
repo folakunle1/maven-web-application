@@ -22,6 +22,7 @@ node{
    input message: 'Application ready for deployment, Please review and approve'
   }
    stage('7deploy2Prod'){
+   sh "sleep 50"
    deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials_updated', path: '', url: 'http://13.52.249.148:8080/')], contextPath: null, war: 'target/*war'
   }
    stage('8emailNotification'){
